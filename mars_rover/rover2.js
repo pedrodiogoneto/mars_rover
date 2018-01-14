@@ -96,22 +96,40 @@ console.log("Rover's Inicial Position: [" + myRover.position[0] + ", " + myRover
 goForward(myRover);
 goBack(myRover);
 
-var commands;
 
 function userCommands(rover, commands) {
-  switch (commands) {
-    case "f":
-      goForward(rover);
-      break;
-    case "b":
-      goBack(rover);
-      break;
-    case "l":
-      turnLeft(rover);
-      break;
-    case "r":
-      turnRight(rover);
-      break;
-    default: console.log("Please insert a valid command");
+  for(var i = 0; i < commands.length; i++){
+    var newCommands = commands[i];
+    switch (newCommands) {
+      case "f":
+        goForward(rover);
+        break;
+      case "b":
+        goBack(rover);
+        break;
+      case "l":
+        turnLeft(rover);
+        break;
+      case "r":
+        turnRight(rover);
+        break;
+      default: console.log("Please insert a valid command");
+    }
   }
+}
+
+
+if(Number(myRover.position[0]) < -5) {
+  rover.position[0] = 5;
+}
+
+if(Number(myRover.position[1]) < -5) {
+  rover.position[1] = 5;
+}
+
+if(Number(myRover.position[0]) > 5) {
+  rover.position[0] = -5;
+}
+if(Number(myRover.position[1]) > 5) {
+  rover.position[1] = -5;
 }
